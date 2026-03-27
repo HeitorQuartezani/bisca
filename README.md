@@ -1,39 +1,26 @@
-# 🃏 Bisca - Jogo de Cartas Multiplayer
+# 🃏 Bisca Multiplayer em Godot (Projeto Inacabado / Laboratório)
 
-Uma implementação digital do clássico jogo de cartas "Bisca", desenvolvida utilizando a **Godot Engine**. Este projeto foca em trazer a experiência da mesa de jogo para o ambiente virtual, contando com suporte a partidas multiplayer (arquitetura Cliente/Servidor), gerenciamento de cartas e animações dinâmicas.
+Uma tentativa de digitalizar o clássico jogo de cartas "Bisca" utilizando a **Godot Engine** e GDScript, com o desafio extra de implementar um sistema multiplayer (cliente/servidor).
 
-## ⚙️ Funcionalidades Principais
+⚠️ **Aviso de Estado do Projeto:** Sendo 100% sincero, este projeto é mais uma experiência de aprendizagem e um laboratório de testes do que um jogo polido. O objetivo principal foi tentar dominar a arquitetura de rede da Godot e a gestão de estado do jogo. O código tem a sua dose de "esparguete", lógicas que poderiam ser mais limpas e, muito provavelmente, bugs à mistura. Não esperes um produto finalizado ou livre de falhas!
 
-* **Multiplayer / Networking:** Arquitetura de rede implementada via GDScript (`NetworkManager.gd` e `Server.gd`), permitindo conexão entre jogadores para partidas online/LAN.
-* **Sistema de Animação:** Gerenciamento de movimentos fluídos de compra, descarte e distribuição de cartas através do `AnimationManager.gd`.
-* **Lógica de Jogo:** Estruturas de dados, valores das cartas e comportamentos implementados em `CardData.gd` e `carta.gd`.
-* **Interface de Usuário (UI):** Visão dedicada do jogador (`PlayerView.tscn` e `PlayerView.gd`) com controle de mão e exibição da mesa (`MesaDeJogo.tscn`).
-* **Deck Completo:** Assets visuais para todos os naipes e coringas estruturados em `/assets/images/cards/`.
+## 🛠️ O que tem lá dentro (a arquitetura possível)
 
-## 🛠️ Tecnologias Utilizadas
+Apesar da confusão natural de um projeto em desenvolvimento, as fundações de um jogo de cartas online estão lá:
 
-* **Motor Gráfico:** [Godot Engine](https://godotengine.org/)
-* **Linguagem:** GDScript
-* **Arquitetura:** Orientação a Objetos e Nodes (Cenas independentes e instanciáveis)
+* **Lógica e Dados:** Estruturação das regras, valores do trunfo e comportamentos das cartas (em ficheiros como `CardData.gd` e `carta.gd`).
+* **Multiplayer "Na Raça":** Scripts dedicados a tentar fazer as instâncias comunicarem entre si através de uma arquitetura rudimentar de rede (`NetworkManager.gd` e `Server.gd`).
+* **Sistema de Animações:** Um gestor criado para tentar dar alguma fluidez visual na hora de puxar, descartar e mover as cartas pela mesa (`AnimationManager.gd`).
+* **Interface (UI):** Cenas que gerem a visão da mesa e o controlo da mão do jogador (`PlayerView.tscn` e `MesaDeJogo.tscn`).
 
-## 📂 Estrutura do Projeto
+## 🚀 Como testar (por tua conta e risco)
 
-* `assets/images/`: Sprites das cartas (`/cards`) e elementos de interface (`/ui`).
-* `scenes/`: Cenas da Godot divididas entre a lógica visual de jogo (`/gameplay`) e interface do usuário (`/ui`).
-* `scripts/`: Toda a lógica em GDScript.
-  * `/gameplay/`: Regras e comportamentos atrelados diretamente às cartas (`carta.gd`).
-  * `/systems/`: Sistemas centrais do jogo (`NetworkManager.gd`, `Server.gd`, `CardData.gd` e `AnimationManager.gd`).
-  * `/ui/`: Controle de interface e interações do jogador (`PlayerView.gd`).
+Se tiveres curiosidade em ver o estado atual, tentar compilar ou apenas aproveitar algum pedaço de código:
 
-## 🚀 Como Executar o Projeto Localmente
-
-1. Certifique-se de ter a Godot Engine instalada em sua máquina.
-2. Clone o repositório utilizando o comando: `git clone https://github.com/HeitorQuartezani/bisca.git`
-3. Abra a Godot Engine, clique em "Importar" e navegue até a pasta clonada.
-4. Selecione o arquivo `project.godot`.
-5. Pressione F5 (ou clique no botão de Play no canto superior direito do editor) para iniciar a cena principal.
+1. Garante que tens a Godot Engine instalada na tua máquina.
+2. Clona este repositório para o teu ambiente local.
+3. Importa o projeto na Godot selecionando o ficheiro `project.godot`.
+4. Prime F5 (ou clica no Play) e descobre o que acontece.
 
 ## 👨‍💻 Autor
-
 **Heitor C. Quartezani**
-Estatístico e Cientista de Dados | Mestrando em Ciência da Computação (PPGI-UFES)
