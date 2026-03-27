@@ -1,0 +1,163 @@
+[gd_scene load_steps=5 format=3 uid="uid://hc6qmbj80314"]
+
+[ext_resource type="Script" uid="uid://coo56ppar52tj" path="res://scripts/ui/PlayerView.gd" id="1_6srj8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m12t7"]
+size = Vector2(27, 38)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sicni"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_notme"]
+size = Vector2(27, 38)
+
+[node name="PlayerView" type="Node2D"]
+position = Vector2(0, 1)
+script = ExtResource("1_6srj8")
+
+[node name="HandAnchor_1" type="Node2D" parent="."]
+position = Vector2(180, 320)
+
+[node name="HandDetectionArea" type="Area2D" parent="HandAnchor_1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HandAnchor_1/HandDetectionArea"]
+shape = SubResource("RectangleShape2D_m12t7")
+
+[node name="HandAnchor_2" type="Node2D" parent="."]
+position = Vector2(320, 180)
+
+[node name="HandAnchor_3" type="Node2D" parent="."]
+position = Vector2(180, 40)
+
+[node name="PartnerHandDetectionArea" type="Area2D" parent="HandAnchor_3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HandAnchor_3/PartnerHandDetectionArea"]
+shape = SubResource("RectangleShape2D_sicni")
+
+[node name="HandAnchor_4" type="Node2D" parent="."]
+position = Vector2(40, 180)
+
+[node name="TablePileAnchor" type="Node2D" parent="."]
+position = Vector2(159, 185)
+
+[node name="DeckPile" type="TextureRect" parent="."]
+offset_left = 197.0
+offset_top = 177.0
+offset_right = 224.0
+offset_bottom = 215.0
+expand_mode = 1
+stretch_mode = 2
+
+[node name="ScoreLabel_Team1" type="Label" parent="."]
+offset_left = 6.0
+offset_top = 1.0
+offset_right = 90.0
+offset_bottom = 24.0
+text = "Dupla 1: 0"
+uppercase = true
+
+[node name="ScoreLabel_Team2" type="Label" parent="."]
+offset_left = 271.0
+offset_top = 2.0
+offset_right = 355.0
+offset_bottom = 25.0
+text = "DUPLA 2: 0"
+
+[node name="ViraAnchor" type="Node2D" parent="."]
+position = Vector2(227, 181)
+rotation = 1.5708
+
+[node name="Area2D" type="Area2D" parent="ViraAnchor"]
+position = Vector2(-1.90735e-06, -1.19209e-07)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ViraAnchor/Area2D"]
+position = Vector2(0.999994, -1)
+shape = SubResource("RectangleShape2D_notme")
+
+[node name="NetworkUI" type="PanelContainer" parent="."]
+offset_left = 90.0
+offset_top = 102.0
+offset_right = 269.0
+offset_bottom = 133.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NetworkUI"]
+layout_mode = 2
+
+[node name="Multiplayer" type="Label" parent="NetworkUI/VBoxContainer"]
+layout_mode = 2
+text = "Multiplayer"
+horizontal_alignment = 1
+
+[node name="IPAddressEdit" type="LineEdit" parent="NetworkUI/VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Digite o IP do Host"
+alignment = 1
+
+[node name="HostButton" type="Button" parent="NetworkUI/VBoxContainer"]
+layout_mode = 2
+text = "Host Game"
+
+[node name="JoinButton" type="Button" parent="NetworkUI/VBoxContainer"]
+layout_mode = 2
+text = "Join Game
+"
+
+[node name="LobbyUI" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(40, 100)
+offset_left = 91.0
+offset_top = 108.0
+offset_right = 280.0
+offset_bottom = 208.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LobbyUI"]
+layout_mode = 2
+
+[node name="PlayerLabel" type="Label" parent="LobbyUI/VBoxContainer"]
+layout_mode = 2
+text = "Jogadores conectados:"
+horizontal_alignment = 1
+
+[node name="PlayerListLabel" type="Label" parent="LobbyUI/VBoxContainer"]
+layout_mode = 2
+text = "-"
+horizontal_alignment = 1
+
+[node name="StartGameButton" type="Button" parent="LobbyUI/VBoxContainer"]
+layout_mode = 2
+text = "Iniciar Jogo"
+
+[node name="GameOverScreen" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.913725)
+
+[node name="ResultMessageLabel" type="Label" parent="GameOverScreen"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 134.0
+offset_right = 232.0
+offset_bottom = 163.0
+text = "Você Venceu!"
+
+[node name="FinalScoreLabel" type="Label" parent="GameOverScreen"]
+layout_mode = 0
+offset_left = 102.0
+offset_top = 165.0
+offset_right = 263.0
+offset_bottom = 188.0
+text = "Placar Final: 120 x 90"
+
+[node name="RestartButton" type="Button" parent="GameOverScreen"]
+layout_mode = 0
+offset_left = 111.0
+offset_top = 216.0
+offset_right = 254.0
+offset_bottom = 247.0
+text = "Jogar Novamente"
+
+[connection signal="mouse_entered" from="HandAnchor_3/PartnerHandDetectionArea" to="." method="_on_partner_hand_detection_area_mouse_entered"]
+[connection signal="mouse_exited" from="HandAnchor_3/PartnerHandDetectionArea" to="." method="_on_partner_hand_detection_area_mouse_exited"]
+[connection signal="input_event" from="ViraAnchor/Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="pressed" from="GameOverScreen/RestartButton" to="." method="_on_restart_button_pressed"]

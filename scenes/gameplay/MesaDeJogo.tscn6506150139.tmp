@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://ca1rr0q15an64"]
+
+[ext_resource type="Script" uid="uid://c6bpgv7f8my32" path="res://scripts/gameplay/mesa_de_jogo.gd" id="1_ye2n0"]
+[ext_resource type="Texture2D" uid="uid://xrfe6f8nx6bk" path="res://assets/images/cards/Deck.png" id="2_bbtrg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bbtrg"]
+
+[node name="MesaDeJogo" type="Node2D"]
+script = ExtResource("1_ye2n0")
+
+[node name="HandAnchor_1" type="Node2D" parent="."]
+position = Vector2(180, 320)
+
+[node name="HandDetectionArea" type="Area2D" parent="HandAnchor_1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HandAnchor_1/HandDetectionArea"]
+shape = SubResource("RectangleShape2D_bbtrg")
+
+[node name="HandAnchor_2" type="Node2D" parent="."]
+position = Vector2(320, 180)
+
+[node name="HandAnchor_3" type="Node2D" parent="."]
+position = Vector2(180, 40)
+
+[node name="HandAnchor_4" type="Node2D" parent="."]
+position = Vector2(40, 180)
+
+[node name="DeckPile" type="TextureRect" parent="."]
+offset_left = 207.0
+offset_top = 178.0
+offset_right = 234.0
+offset_bottom = 224.0
+texture = ExtResource("2_bbtrg")
+stretch_mode = 2
+
+[node name="SwitchPOVButton" type="Button" parent="."]
+offset_left = 265.0
+offset_right = 360.0
+offset_bottom = 31.0
+text = "Trocar POV"

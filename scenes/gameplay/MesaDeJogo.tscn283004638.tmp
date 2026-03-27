@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://ca1rr0q15an64"]
+
+[ext_resource type="Script" uid="uid://c6bpgv7f8my32" path="res://scripts/gameplay/mesa_de_jogo.gd" id="1_ye2n0"]
+
+[node name="MesaDeJogo" type="Node2D"]
+script = ExtResource("1_ye2n0")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Ola, mundo do Baralho!"

@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://dljufxgfmkifq"]
+
+[ext_resource type="Script" uid="uid://mh6ewehuvfnf" path="res://scripts/gameplay/carta.gd" id="1_50o6a"]
+[ext_resource type="Texture2D" uid="uid://c7mo11jxsry76" path="res://assets/images/ui/Card_Blank.png" id="2_50o6a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4gtqo"]
+size = Vector2(28, 40)
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_50o6a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4gtqo")
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="CartaSprite" type="Sprite2D" parent="Visuals"]
+texture = ExtResource("2_50o6a")
+
+[node name="ValorLabel" type="Label" parent="Visuals"]
+visible = false
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 28.0
+offset_bottom = -10.0
+text = "Valor"
